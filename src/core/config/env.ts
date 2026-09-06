@@ -5,9 +5,9 @@
 
 export const env = {
   /**
-   * Backend API base URL. Defaults to https://localhost:7258
+   * Backend API base URL. Defaults to https://live-track.runasp.net
    */
-  apiBaseUrl: (import.meta.env.VITE_API_BASE_URL as string) || 'https://localhost:7258',
+  apiBaseUrl: (import.meta.env.VITE_API_BASE_URL as string) || 'https://live-track.runasp.net',
 
   /**
    * Application name in Arabic
