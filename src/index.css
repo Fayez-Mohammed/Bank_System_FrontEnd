@@ -6,11 +6,18 @@
   }
 
   * {
-    -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
   }
 
-  html, body {
+  html {
+    font-family: var(--font-cairo);
+    direction: rtl;
+    text-align: right;
+    scroll-behavior: smooth;
+    height: 100%;
+  }
+
+  body {
     font-family: var(--font-cairo);
     direction: rtl;
     text-align: right;
@@ -18,17 +25,12 @@
     padding: 0;
     min-height: 100%;
     width: 100%;
-    overflow-x: hidden;
     background-color: #0b0f19;
     color: #f1f5f9;
+    overflow-x: hidden;
+    overflow-y: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Optimize touch scrolling for mobile */
-  body {
-    overscroll-behavior-y: none;
-    -webkit-overflow-scrolling: touch;
   }
 
   input, textarea, select, button {
@@ -36,7 +38,7 @@
   }
 }
 
-/* Mobile Safe Area Utilities */
+/* Safe Area Utilities */
 .safe-top {
   padding-top: env(safe-area-inset-top, 0px);
 }
@@ -45,27 +47,20 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-.safe-left {
-  padding-left: env(safe-area-inset-left, 0px);
-}
-
-.safe-right {
-  padding-right: env(safe-area-inset-right, 0px);
-}
-
-/* Custom subtle scrollbar for mobile lists */
+/* Elegant Scrollbar for Desktop & Mobile */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #0b0f19;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #334155;
   border-radius: 9999px;
+  border: 2px solid #0b0f19;
 }
 
 ::-webkit-scrollbar-thumb:hover {

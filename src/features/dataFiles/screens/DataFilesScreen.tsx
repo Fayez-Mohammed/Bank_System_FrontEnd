@@ -6,6 +6,7 @@ import {
   ArrowUpDown,
   FileSpreadsheet,
   Filter,
+  FolderKanban,
 } from 'lucide-react'
 import {
   useDataFiles,
@@ -28,7 +29,6 @@ import {
   Input,
   Badge,
 } from '@/shared/components/ui'
-import { TopBar } from '@/navigation/TopBar'
 import { useDebounce } from '@/shared/hooks/useDebounce'
 import { useAuth } from '@/features/auth/context/AuthContext'
 
@@ -81,185 +81,202 @@ export const DataFilesScreen: React.FC = () => {
   }, [data?.items, debouncedSearch, statusFilter])
 
   return (
-    <div className="flex flex-col min-h-full">
-      {/* Mobile Top Bar */}
-      <TopBar
-        title="ملفات البيانات"
-        subtitle={data?.header?.groupName || 'إدارة ومطابقة ملفات الأسطول'}
-        actions={
-          <div className="flex items-center gap-1.5">
-            {Boolean(data?.items && data.items.length > 1) && (
-              <button
-                type="button"
-                onClick={() => setReorderOpen(true)}
-                className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 active:bg-slate-750 transition-colors"
-                aria-label="إعادة ترتيب الملفات"
-                title="إعادة ترتيب الملفات"
-              >
-                <ArrowUpDown className="w-4 h-4" />
-              </button>
+    <div className="space-y-6">
+      {/* Page Header (Responsive on Mobile and Desktop) */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center">
+              <FolderKanban className="w-5 h-5" />
+            </div>
+            <h1 className="text-xl sm:text-2xl font-bold text-slate-100">
+              ملفات البيانات
+            </h1>
+            {data?.header?.groupName && (
+              <Badge variant="info" className="text-xs">
+                {data.header.groupName}
+              </Badge>
             )}
-
-            <button
-              type="button"
-              onClick={() => refetch()}
-              disabled={isFetching}
-              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 active:bg-slate-750 transition-colors"
-              aria-label="تحديث البيانات"
-              title="تحديث البيانات"
-            >
-              <RefreshCw
-                className={`w-4 h-4 ${isFetching ? 'animate-spin text-blue-400' : ''}`}
-              />
-            </button>
           </div>
-        }
-      />
+          <p className="text-xs sm:text-sm text-slate-400">
+            إدارة، رفع، ومطابقة ملفات إكسل لأرقام لوحات السيارات
+          </p>
+        </div>
 
-      {/* Screen Content Container */}
-      <div className="p-4 space-y-4 pb-12">
-        {/* User Welcome Banner */}
-        {user && (
-          <div className="flex items-center justify-between px-3.5 py-2 rounded-xl bg-slate-850/60 border border-slate-750/50 text-xs">
-            <span className="text-slate-300">
-              المستخدم الحالي:{' '}
-              <strong className="text-blue-300 font-bold">{user.fullName}</strong>
-            </span>
-            <Badge variant="outline" className="text-2xs font-mono">
-              {user.role}
-            </Badge>
-          </div>
-        )}
-
-        {/* Loading State */}
-        {isLoading && (
-          <div className="space-y-4">
-            <CardSkeleton count={3} />
-          </div>
-        )}
-
-        {/* Error State */}
-        {isError && !isLoading && (
-          <ErrorState
-            message={error?.message || 'تعذر تحميل قائمة الملفات من الخادم'}
-            onRetry={() => refetch()}
-            isRetrying={isFetching}
-          />
-        )}
-
-        {/* Content when loaded successfully */}
-        {!isLoading && !isError && data && (
-          <>
-            {/* Header Statistics Card */}
-            <DataFilesHeaderStats header={data.header} />
-
-            {/* Upload Primary Action Button */}
+        {/* Action Buttons Toolbar */}
+        <div className="flex items-center gap-2 flex-wrap">
+          {Boolean(data?.items && data.items.length > 1) && (
             <Button
-              fullWidth
-              size="lg"
-              onClick={() => setIsUploadOpen(true)}
-              leftIcon={<UploadCloud className="w-5 h-5" />}
-              className="shadow-lg shadow-blue-600/20"
+              variant="outline"
+              size="sm"
+              onClick={() => setReorderOpen(true)}
+              leftIcon={<ArrowUpDown className="w-4 h-4 text-slate-400" />}
             >
-              رفع ملف إكسل جديد
+              ترتيب الملفات
             </Button>
+          )}
 
-            {/* Search & Filter Toolbar */}
-            <div className="space-y-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => refetch()}
+            disabled={isFetching}
+            leftIcon={
+              <RefreshCw
+                className={`w-4 h-4 ${isFetching ? 'animate-spin text-blue-400' : 'text-slate-400'}`}
+              />
+            }
+          >
+            تحديث
+          </Button>
+
+          <Button
+            variant="primary"
+            size="sm"
+            onClick={() => setIsUploadOpen(true)}
+            leftIcon={<UploadCloud className="w-4 h-4" />}
+            className="shadow-md shadow-blue-600/20"
+          >
+            رفع ملف إكسل
+          </Button>
+        </div>
+      </div>
+
+      {/* User Information Banner if logged in */}
+      {user && (
+        <div className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+          <span className="text-slate-300">
+            المستخدم الحالي:{' '}
+            <strong className="text-blue-300 font-bold">{user.fullName}</strong>
+          </span>
+          <Badge variant="outline" className="text-2xs font-mono">
+            {user.role}
+          </Badge>
+        </div>
+      )}
+
+      {/* Loading Skeleton */}
+      {isLoading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <CardSkeleton count={3} />
+        </div>
+      )}
+
+      {/* Error State */}
+      {isError && !isLoading && (
+        <ErrorState
+          message={error?.message || 'تعذر الاتصال بالخادم لجلب قائمة الملفات'}
+          onRetry={() => refetch()}
+          isRetrying={isFetching}
+        />
+      )}
+
+      {/* Content when data is loaded */}
+      {!isLoading && !isError && data && (
+        <>
+          {/* Header Stats */}
+          <DataFilesHeaderStats header={data.header} />
+
+          {/* Search & Filter Section */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-2xl bg-slate-900 border border-slate-800">
+            <div className="w-full sm:w-72">
               <Input
                 placeholder="ابحث باسم الملف أو اسم المالك..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 rightIcon={<Search className="w-4 h-4 text-slate-400" />}
                 onClear={() => setSearchTerm('')}
-                className="h-11"
+                className="h-10 text-xs"
               />
-
-              {/* Status Filter Chips */}
-              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-2xs">
-                <span className="flex items-center gap-1 text-slate-500 pl-1">
-                  <Filter className="w-3 h-3" />
-                  <span>تصفية:</span>
-                </span>
-
-                <button
-                  type="button"
-                  onClick={() => setStatusFilter('ALL')}
-                  className={`px-3 py-1.5 rounded-full font-medium transition-colors ${
-                    statusFilter === 'ALL'
-                      ? 'bg-blue-600 text-white shadow-sm'
-                      : 'bg-slate-800 text-slate-300 hover:bg-slate-750'
-                  }`}
-                >
-                  الكل ({data.items.length})
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setStatusFilter('ACTIVE')}
-                  className={`px-3 py-1.5 rounded-full font-medium transition-colors ${
-                    statusFilter === 'ACTIVE'
-                      ? 'bg-emerald-600 text-white shadow-sm'
-                      : 'bg-slate-800 text-slate-300 hover:bg-slate-750'
-                  }`}
-                >
-                  المفعلة للتصفية ({data.items.filter((f) => f.isActiveForFiltering).length})
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setStatusFilter('PROCESSING')}
-                  className={`px-3 py-1.5 rounded-full font-medium transition-colors ${
-                    statusFilter === 'PROCESSING'
-                      ? 'bg-amber-600 text-white shadow-sm'
-                      : 'bg-slate-800 text-slate-300 hover:bg-slate-750'
-                  }`}
-                >
-                  قيد المعالجة (
-                  {
-                    data.items.filter(
-                      (f) =>
-                        f.importStatus.toLowerCase() === 'processing' ||
-                        f.importStatus.toLowerCase() === 'pending'
-                    ).length
-                  }
-                  )
-                </button>
-              </div>
             </div>
 
-            {/* Empty Files State */}
-            {data.items.length === 0 && (
-              <EmptyState
-                icon={<FileSpreadsheet className="w-8 h-8 text-blue-400" />}
-                title="لا توجد ملفات بيانات حالياً"
-                description="لم يتم رفع أي ملفات إكسل لهذه المجموعة بعد. ابدأ برفع ملفك الأول لتفعيل المطابقة وتتبع اللوحات."
-                actionLabel="رفع ملف إكسل الآن"
-                onAction={() => setIsUploadOpen(true)}
-              />
-            )}
+            {/* Filter Pills */}
+            <div className="flex items-center gap-1.5 overflow-x-auto text-2xs">
+              <span className="flex items-center gap-1 text-slate-500 pl-1">
+                <Filter className="w-3.5 h-3.5" />
+                <span>التصفية:</span>
+              </span>
 
-            {/* No Search Results */}
-            {data.items.length > 0 && filteredFiles.length === 0 && (
-              <EmptyState
-                title="لا توجد نتائج مطابقة"
-                description="لم يتم العثور على أي ملف يطابق معايير البحث أو التصفية الحالية."
-                actionLabel="إلغاء التصفية"
-                onAction={() => {
-                  setSearchTerm('')
-                  setStatusFilter('ALL')
-                }}
-              />
-            )}
+              <button
+                type="button"
+                onClick={() => setStatusFilter('ALL')}
+                className={`px-3 py-1.5 rounded-full font-medium transition-colors ${
+                  statusFilter === 'ALL'
+                    ? 'bg-blue-600 text-white shadow-sm'
+                    : 'bg-slate-800 text-slate-300 hover:bg-slate-750'
+                }`}
+              >
+                الكل ({data.items.length})
+              </button>
 
-            {/* Data Files List */}
-            {filteredFiles.length > 0 && (
-              <div className="space-y-3">
-                <div className="flex items-center justify-between text-2xs text-slate-400 px-1">
-                  <span>الملفات المتاحة ({filteredFiles.length})</span>
-                  <span>الترتيب حسب الأولوية</span>
-                </div>
+              <button
+                type="button"
+                onClick={() => setStatusFilter('ACTIVE')}
+                className={`px-3 py-1.5 rounded-full font-medium transition-colors ${
+                  statusFilter === 'ACTIVE'
+                    ? 'bg-emerald-600 text-white shadow-sm'
+                    : 'bg-slate-800 text-slate-300 hover:bg-slate-750'
+                }`}
+              >
+                المفعلة ({data.items.filter((f) => f.isActiveForFiltering).length})
+              </button>
 
+              <button
+                type="button"
+                onClick={() => setStatusFilter('PROCESSING')}
+                className={`px-3 py-1.5 rounded-full font-medium transition-colors ${
+                  statusFilter === 'PROCESSING'
+                    ? 'bg-amber-600 text-white shadow-sm'
+                    : 'bg-slate-800 text-slate-300 hover:bg-slate-750'
+                }`}
+              >
+                قيد المعالجة (
+                {
+                  data.items.filter(
+                    (f) =>
+                      f.importStatus.toLowerCase() === 'processing' ||
+                      f.importStatus.toLowerCase() === 'pending'
+                  ).length
+                }
+                )
+              </button>
+            </div>
+          </div>
+
+          {/* Empty State */}
+          {data.items.length === 0 && (
+            <EmptyState
+              icon={<FileSpreadsheet className="w-10 h-10 text-blue-400" />}
+              title="لا توجد ملفات بيانات حالياً"
+              description="لم يتم رفع أي ملفات إكسل لهذه المجموعة بعد. اضغط على الزر أدناه لرفع ملفك الأول."
+              actionLabel="رفع ملف إكسل الآن"
+              onAction={() => setIsUploadOpen(true)}
+            />
+          )}
+
+          {/* No Filter Results */}
+          {data.items.length > 0 && filteredFiles.length === 0 && (
+            <EmptyState
+              title="لا توجد نتائج مطابقة"
+              description="لم يتم العثور على أي ملف يطابق معايير البحث أو التصفية الحالية."
+              actionLabel="إلغاء التصفية"
+              onAction={() => {
+                setSearchTerm('')
+                setStatusFilter('ALL')
+              }}
+            />
+          )}
+
+          {/* Responsive Cards Grid */}
+          {filteredFiles.length > 0 && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between text-xs text-slate-400 px-1">
+                <span>الملفات ({filteredFiles.length})</span>
+                <span>مرتبة حسب الأولوية</span>
+              </div>
+
+              {/* Grid: 1 col on mobile, 2 cols on tablet, 3 cols on desktop */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredFiles.map((file) => (
                   <DataFileCard
                     key={file.id}
@@ -272,10 +289,10 @@ export const DataFilesScreen: React.FC = () => {
                   />
                 ))}
               </div>
-            )}
-          </>
-        )}
-      </div>
+            </div>
+          )}
+        </>
+      )}
 
       {/* Sheets / Modals */}
       <UploadDataFileSheet

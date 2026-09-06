@@ -1,0 +1,606 @@
+Auth
+
+
+POST
+/api/Auth/login
+Authenticates a user with the provided login credentials and returns a JWT token if successful.
+
+
+Parameters
+Cancel
+Reset
+No parameters
+
+Request body
+
+application/json
+Edit Value
+Schema
+{
+  "email": "ahmed.user@bank.com",
+  "password": "**AAaa010"
+}
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'POST' \
+  'https://localhost:7258/api/Auth/login' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoi2KPYrdmF2K8gKNmF2LPYqtiu2K_ZhSkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJhMzNkMTQyOS0wNjg5LTQ1MWQtYjU3My02N2RkY2Y1MzFjMzEiLCJzdWIiOiIzMzMzMzMzMy0zMzMzLTMzMzMtMzMzMy0zMzMzMzMzMzMzMzMiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAwMTQ4LCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.jPVN5shDS82QaqgCLC0bUgy12M3y9NITr1PrrXWXOY4' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "email": "ahmed.user@bank.com",
+  "password": "**AAaa010"
+}'
+Request URL
+https://localhost:7258/api/Auth/login
+Server response
+Code	Details
+200	
+Response body
+Download
+{
+  "success": true,
+  "message": "User logged in successfully",
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoi2KPYrdmF2K8gKNmF2LPYqtiu2K_ZhSkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJjMzE0OWFkZS1hYTIzLTQ2YTAtOGY2Mi05NjZkZDQzMzRjNGEiLCJzdWIiOiIzMzMzMzMzMy0zMzMzLTMzMzMtMzMzMy0zMzMzMzMzMzMzMzMiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5Ub2dnbGVGaWxlcyI6InRydWUiLCJDYW5BcHBlbmRUb1RlYW1GaWxlcyI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAxMTI4LCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.cYTZhqlhyjoSP9vr0hQ0cjmqonmPhITMWCLF64Auk9c",
+    "expireAt": "2026-09-06T13:25:28.9364461Z",
+    "userLogin": {
+      "id": "33333333-3333-3333-3333-333333333333",
+      "fullName": "أحمد (مستخدم)",
+      "role": "User"
+    }
+  },
+  "errors": null,
+  "traceId": "0HNOC1O0KHAJ4:00000141",
+  "statusCode": 200
+}
+Response headers
+ access-control-allow-origin: * 
+ content-type: application/json; charset=utf-8 
+ date: Sun,06 Sep 2026 12:25:28 GMT 
+ server: Kestrel 
+Responses
+Code	Description	Links
+200	
+OK
+
+No links
+DataFiles
+
+
+GET
+/api/groups/{groupId}/data-files
+
+
+Parameters
+Cancel
+Name	Description
+groupId *
+string($uuid)
+(path)
+11111111-1111-1111-1111-111111111111
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'GET' \
+  'https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoi2KPYrdmF2K8gKNmF2LPYqtiu2K_ZhSkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJhMzNkMTQyOS0wNjg5LTQ1MWQtYjU3My02N2RkY2Y1MzFjMzEiLCJzdWIiOiIzMzMzMzMzMy0zMzMzLTMzMzMtMzMzMy0zMzMzMzMzMzMzMzMiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAwMTQ4LCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.jPVN5shDS82QaqgCLC0bUgy12M3y9NITr1PrrXWXOY4'
+Request URL
+https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files
+Server response
+Code	Details
+200	
+Response body
+Download
+{
+  "success": true,
+  "message": null,
+  "data": {
+    "header": {
+      "totalFilesCount": 2,
+      "groupTotalRows": 463494,
+      "currentUserRows": 463494,
+      "groupName": "فرحات مكه"
+    },
+    "items": [
+      {
+        "id": "07a1044d-a8a8-f111-8f73-00155df0670d",
+        "fileName": "مكه2026.xlsx",
+        "rowCount": 310347,
+        "isActiveForFiltering": true,
+        "sortOrder": 1,
+        "requiresPassword": false,
+        "ownerName": "أحمد (مستخدم)",
+        "importStatus": "Completed",
+        "createdAt": "2026-09-04T21:33:43.3412437"
+      },
+      {
+        "id": "74378256-eda9-f111-8f73-00155df0670d",
+        "fileName": "جديد البرنامج.xlsx",
+        "rowCount": 153147,
+        "isActiveForFiltering": true,
+        "sortOrder": 2,
+        "requiresPassword": false,
+        "ownerName": "أحمد (مستخدم)",
+        "importStatus": "Completed",
+        "createdAt": "2026-09-06T12:20:28.1010128"
+      }
+    ]
+  },
+  "errors": null,
+  "traceId": "0HNOC1O0KHAJ4:000000C3",
+  "statusCode": 200
+}
+Response headers
+ content-type: application/json; charset=utf-8 
+ date: Sun,06 Sep 2026 12:22:35 GMT 
+ server: Kestrel 
+Responses
+Code	Description	Links
+200	
+OK
+
+No links
+
+POST
+/api/groups/{groupId}/data-files
+
+
+Parameters
+Cancel
+Reset
+Name	Description
+groupId *
+string($uuid)
+(path)
+11111111-1111-1111-1111-111111111111
+Request body
+
+multipart/form-data
+File
+string($binary)
+جديد البرنامج.xlsx
+Send empty value
+Password
+string
+Password
+Send empty value
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'POST' \
+  'https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoi2KPYrdmF2K8gKNmF2LPYqtiu2K_ZhSkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJhMzNkMTQyOS0wNjg5LTQ1MWQtYjU3My02N2RkY2Y1MzFjMzEiLCJzdWIiOiIzMzMzMzMzMy0zMzMzLTMzMzMtMzMzMy0zMzMzMzMzMzMzMzMiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAwMTQ4LCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.jPVN5shDS82QaqgCLC0bUgy12M3y9NITr1PrrXWXOY4' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'File=@جديد البرنامج.xlsx;type=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' \
+  -F 'Password='
+Request URL
+https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files
+Server response
+Code	Details
+202
+Undocumented
+Response body
+Download
+{
+  "success": true,
+  "message": "الملف اتقبل وبدأ يتعالج في الخلفية.",
+  "data": "74378256-eda9-f111-8f73-00155df0670d",
+  "errors": null,
+  "traceId": "0HNOC1O0KHAJ4:0000002B",
+  "statusCode": 202
+}
+Response headers
+ access-control-allow-origin: * 
+ content-type: application/json; charset=utf-8 
+ date: Sun,06 Sep 2026 12:20:28 GMT 
+ location: https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files 
+ server: Kestrel 
+Responses
+Code	Description	Links
+200	
+OK
+
+No links
+
+POST
+/api/groups/{groupId}/data-files/{dataFileId}/append
+
+
+Parameters
+Cancel
+Reset
+Name	Description
+groupId *
+string($uuid)
+(path)
+11111111-1111-1111-1111-111111111111
+dataFileId *
+string($uuid)
+(path)
+07a1044d-a8a8-f111-8f73-00155df0670d
+Request body
+
+multipart/form-data
+File
+string($binary)
+جديد البرنامج.xlsx
+Send empty value
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'POST' \
+  'https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/07a1044d-a8a8-f111-8f73-00155df0670d/append' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoi2KPYrdmF2K8gKNmF2LPYqtiu2K_ZhSkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJjMzE0OWFkZS1hYTIzLTQ2YTAtOGY2Mi05NjZkZDQzMzRjNGEiLCJzdWIiOiIzMzMzMzMzMy0zMzMzLTMzMzMtMzMzMy0zMzMzMzMzMzMzMzMiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5Ub2dnbGVGaWxlcyI6InRydWUiLCJDYW5BcHBlbmRUb1RlYW1GaWxlcyI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAxMTI4LCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.cYTZhqlhyjoSP9vr0hQ0cjmqonmPhITMWCLF64Auk9c' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'File=@جديد البرنامج.xlsx;type=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+Request URL
+https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/07a1044d-a8a8-f111-8f73-00155df0670d/append
+Server response
+Code	Details
+202
+Undocumented
+Response body
+Download
+{
+  "success": true,
+  "message": "جاري إلحاق البيانات في الخلفية.",
+  "data": true,
+  "errors": null,
+  "traceId": "0HNOC1O0KHAJ5:0000006B",
+  "statusCode": 202
+}
+Response headers
+ access-control-allow-origin: * 
+ content-type: application/json; charset=utf-8 
+ date: Sun,06 Sep 2026 12:29:29 GMT 
+ server: Kestrel 
+Responses
+Code	Description	Links
+200	
+OK
+
+No links
+
+PATCH
+/api/groups/{groupId}/data-files/{dataFileId}/toggle-active
+
+
+Parameters
+Cancel
+Name	Description
+groupId *
+string($uuid)
+(path)
+11111111-1111-1111-1111-111111111111
+dataFileId *
+string($uuid)
+(path)
+74378256-eda9-f111-8f73-00155df0670d
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'PATCH' \
+  'https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/74378256-eda9-f111-8f73-00155df0670d/toggle-active' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoi2KPYrdmF2K8gKNmF2LPYqtiu2K_ZhSkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJjMzE0OWFkZS1hYTIzLTQ2YTAtOGY2Mi05NjZkZDQzMzRjNGEiLCJzdWIiOiIzMzMzMzMzMy0zMzMzLTMzMzMtMzMzMy0zMzMzMzMzMzMzMzMiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5Ub2dnbGVGaWxlcyI6InRydWUiLCJDYW5BcHBlbmRUb1RlYW1GaWxlcyI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAxMTI4LCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.cYTZhqlhyjoSP9vr0hQ0cjmqonmPhITMWCLF64Auk9c'
+Request URL
+https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/74378256-eda9-f111-8f73-00155df0670d/toggle-active
+Server response
+Code	Details
+200	
+Response body
+Download
+{
+  "success": true,
+  "message": null,
+  "data": true,
+  "errors": null,
+  "traceId": "0HNOC1O0KHAJ4:00000179",
+  "statusCode": 200
+}
+Response headers
+ access-control-allow-origin: * 
+ content-type: application/json; charset=utf-8 
+ date: Sun,06 Sep 2026 12:26:46 GMT 
+ server: Kestrel 
+Responses
+Code	Description	Links
+200	
+OK
+
+No links
+
+PATCH
+/api/groups/{groupId}/data-files/reorder
+
+
+Parameters
+Cancel
+Reset
+Name	Description
+groupId *
+string($uuid)
+(path)
+11111111-1111-1111-1111-111111111111
+Request body
+
+application/json
+Edit Value
+Schema
+{
+  "items": [
+    {
+      "id": "07a1044d-a8a8-f111-8f73-00155df0670d",
+      "sortOrder": 2
+    },
+ {
+      "id": "74378256-eda9-f111-8f73-00155df0670d",
+      "sortOrder": 1
+    }
+  ]
+}
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'PATCH' \
+  'https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/reorder' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoi2KPYrdmF2K8gKNmF2LPYqtiu2K_ZhSkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJjMzE0OWFkZS1hYTIzLTQ2YTAtOGY2Mi05NjZkZDQzMzRjNGEiLCJzdWIiOiIzMzMzMzMzMy0zMzMzLTMzMzMtMzMzMy0zMzMzMzMzMzMzMzMiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5Ub2dnbGVGaWxlcyI6InRydWUiLCJDYW5BcHBlbmRUb1RlYW1GaWxlcyI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAxMTI4LCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.cYTZhqlhyjoSP9vr0hQ0cjmqonmPhITMWCLF64Auk9c' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "items": [
+    {
+      "id": "07a1044d-a8a8-f111-8f73-00155df0670d",
+      "sortOrder": 2
+    },
+ {
+      "id": "74378256-eda9-f111-8f73-00155df0670d",
+      "sortOrder": 1
+    }
+  ]
+}'
+Request URL
+https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/reorder
+Server response
+Code	Details
+200	
+Response body
+Download
+{
+  "success": true,
+  "message": null,
+  "data": true,
+  "errors": null,
+  "traceId": "0HNOC1O0KHAJ5:0000002B",
+  "statusCode": 200
+}
+Response headers
+ access-control-allow-origin: * 
+ content-type: application/json; charset=utf-8 
+ date: Sun,06 Sep 2026 12:28:01 GMT 
+ server: Kestrel 
+Responses
+Code	Description	Links
+200	
+OK
+
+No links
+
+DELETE
+/api/groups/{groupId}/data-files/{dataFileId}
+
+
+Parameters
+Cancel
+Name	Description
+groupId *
+string($uuid)
+(path)
+11111111-1111-1111-1111-111111111111
+dataFileId *
+string($uuid)
+(path)
+74378256-eda9-f111-8f73-00155df0670d
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'DELETE' \
+  'https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/74378256-eda9-f111-8f73-00155df0670d' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoi2KPYrdmF2K8gKNmF2LPYqtiu2K_ZhSkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJjMzE0OWFkZS1hYTIzLTQ2YTAtOGY2Mi05NjZkZDQzMzRjNGEiLCJzdWIiOiIzMzMzMzMzMy0zMzMzLTMzMzMtMzMzMy0zMzMzMzMzMzMzMzMiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5Ub2dnbGVGaWxlcyI6InRydWUiLCJDYW5BcHBlbmRUb1RlYW1GaWxlcyI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAxMTI4LCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.cYTZhqlhyjoSP9vr0hQ0cjmqonmPhITMWCLF64Auk9c'
+Request URL
+https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/74378256-eda9-f111-8f73-00155df0670d
+Server response
+Code	Details
+403
+Undocumented
+Error: response status is 403
+
+Response headers
+ access-control-allow-origin: * 
+ content-length: 0 
+ date: Sun,06 Sep 2026 12:31:18 GMT 
+ server: Kestrel 
+Responses
+Code	Description	Links
+200	
+OK
+
+No links
+
+GET
+/api/groups/{groupId}/data-files/{dataFileId}/download
+
+
+Parameters
+Cancel
+Name	Description
+groupId *
+string($uuid)
+(path)
+11111111-1111-1111-1111-111111111111
+dataFileId *
+string($uuid)
+(path)
+74378256-eda9-f111-8f73-00155df0670d
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'GET' \
+  'https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/74378256-eda9-f111-8f73-00155df0670d/download' \
+  -H 'accept: application/octet-stream' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoi2KPYrdmF2K8gKNmF2LPYqtiu2K_ZhSkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJjMzE0OWFkZS1hYTIzLTQ2YTAtOGY2Mi05NjZkZDQzMzRjNGEiLCJzdWIiOiIzMzMzMzMzMy0zMzMzLTMzMzMtMzMzMy0zMzMzMzMzMzMzMzMiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5Ub2dnbGVGaWxlcyI6InRydWUiLCJDYW5BcHBlbmRUb1RlYW1GaWxlcyI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAxMTI4LCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.cYTZhqlhyjoSP9vr0hQ0cjmqonmPhITMWCLF64Auk9c'
+Request URL
+https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/74378256-eda9-f111-8f73-00155df0670d/download
+Server response
+Code	Details
+200	
+Response body
+Download file
+Response headers
+ content-disposition: attachment; filename="____ ________.xlsx"; filename*=UTF-8''%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC.xlsx 
+ content-length: 5810174 
+ content-type: application/octet-stream 
+ date: Sun,06 Sep 2026 12:28:38 GMT 
+ server: Kestrel 
+Responses
+Code	Description	Links
+200	
+OK
+
+Media type
+
+application/octet-stream
+Controls Accept header.
+Example Value
+Schema
+string
+=================================
+Auth
+
+
+POST
+/api/Auth/login
+Authenticates a user with the provided login credentials and returns a JWT token if successful.
+
+
+Parameters
+Cancel
+Reset
+No parameters
+
+Request body
+
+application/json
+Edit Value
+Schema
+{
+  "email": "admin@gmail.com",
+  "password": "**AAaa010"
+}
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'POST' \
+  'https://localhost:7258/api/Auth/login' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoi2KPYrdmF2K8gKNmF2LPYqtiu2K_ZhSkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJjMzE0OWFkZS1hYTIzLTQ2YTAtOGY2Mi05NjZkZDQzMzRjNGEiLCJzdWIiOiIzMzMzMzMzMy0zMzMzLTMzMzMtMzMzMy0zMzMzMzMzMzMzMzMiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5Ub2dnbGVGaWxlcyI6InRydWUiLCJDYW5BcHBlbmRUb1RlYW1GaWxlcyI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAxMTI4LCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.cYTZhqlhyjoSP9vr0hQ0cjmqonmPhITMWCLF64Auk9c' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "email": "admin@gmail.com",
+  "password": "**AAaa010"
+}'
+Request URL
+https://localhost:7258/api/Auth/login
+Server response
+Code	Details
+200	
+Response body
+Download
+{
+  "success": true,
+  "message": "User logged in successfully",
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiU3VwZXIgQWRtaW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijg4ZTQ1YzM3LWQyYTctZjExMS04ZjczLTAwMTU1ZGYwNjcwZCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlN1cGVyQWRtaW4iLCJqdGkiOiIwNGIwNTkxMi1kOWMzLTQxN2QtOTA5Ny00MmVmMzU0YjNiN2UiLCJzdWIiOiI4OGU0NWMzNy1kMmE3LWYxMTEtOGY3My0wMDE1NWRmMDY3MGQiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5Ub2dnbGVGaWxlcyI6InRydWUiLCJDYW5BcHBlbmRUb1RlYW1GaWxlcyI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAxNTcwLCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.w4ElrWkQTCkmw_bx83Hv_ArWskRf6xzHV7kDcenr8cc",
+    "expireAt": "2026-09-06T13:32:50.7745065Z",
+    "userLogin": {
+      "id": "88e45c37-d2a7-f111-8f73-00155df0670d",
+      "fullName": "Super Admin",
+      "role": "SuperAdmin"
+    }
+  },
+  "errors": null,
+  "traceId": "0HNOC1O0KHAJ5:0000015F",
+  "statusCode": 200
+}
+DELETE
+/api/groups/{groupId}/data-files/{dataFileId}
+
+
+Parameters
+Cancel
+Name	Description
+groupId *
+string($uuid)
+(path)
+11111111-1111-1111-1111-111111111111
+dataFileId *
+string($uuid)
+(path)
+74378256-eda9-f111-8f73-00155df0670d
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'DELETE' \
+  'https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/74378256-eda9-f111-8f73-00155df0670d' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiU3VwZXIgQWRtaW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijg4ZTQ1YzM3LWQyYTctZjExMS04ZjczLTAwMTU1ZGYwNjcwZCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlN1cGVyQWRtaW4iLCJqdGkiOiIwNGIwNTkxMi1kOWMzLTQxN2QtOTA5Ny00MmVmMzU0YjNiN2UiLCJzdWIiOiI4OGU0NWMzNy1kMmE3LWYxMTEtOGY3My0wMDE1NWRmMDY3MGQiLCJDYW5Eb3dubG9hZCI6InRydWUiLCJDYW5Ub2dnbGVGaWxlcyI6InRydWUiLCJDYW5BcHBlbmRUb1RlYW1GaWxlcyI6InRydWUiLCJDYW5GaWx0ZXIiOiJ0cnVlIiwiZXhwIjoxNzg4NzAxNTcwLCJpc3MiOiJBdXRoQVBJU1FMIiwiYXVkIjoiQXV0aEFQSVVzZXJzIn0.w4ElrWkQTCkmw_bx83Hv_ArWskRf6xzHV7kDcenr8cc'
+Request URL
+https://localhost:7258/api/groups/11111111-1111-1111-1111-111111111111/data-files/74378256-eda9-f111-8f73-00155df0670d
+Server response
+Code	Details
+200	
+Response body
+Download
+{
+  "success": true,
+  "message": "جاري حذف الملف والبيانات المرتبطة به في الخلفية.",
+  "data": true,
+  "errors": null,
+  "traceId": "0HNOC1O0KHAJ5:000001A5",
+  "statusCode": 200
+}
+Response headers
+ access-control-allow-origin: * 
+ content-type: application/json; charset=utf-8 
+ date: Sun,06 Sep 2026 12:34:27 GMT 
+ server: Kestrel 
+Responses
+Code	Description	Links
+200	
+OK
