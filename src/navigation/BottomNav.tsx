@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, Car, Navigation, Bell, User } from 'lucide-react'
+import { LayoutDashboard, FileSpreadsheet, User } from 'lucide-react'
 import { cn } from '@/shared/utils/cn'
 
 export interface NavTabItem {
@@ -19,22 +19,10 @@ const defaultTabs: NavTabItem[] = [
     icon: LayoutDashboard,
   },
   {
-    key: 'cars',
-    label: 'السيارات',
-    to: '/cars',
-    icon: Car,
-  },
-  {
-    key: 'tracking',
-    label: 'التتبع',
-    to: '/tracking',
-    icon: Navigation,
-  },
-  {
-    key: 'alerts',
-    label: 'التنبيهات',
-    to: '/alerts',
-    icon: Bell,
+    key: 'dataFiles',
+    label: 'الملفات',
+    to: '/data-files',
+    icon: FileSpreadsheet,
   },
   {
     key: 'profile',

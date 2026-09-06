@@ -1,6 +1,7 @@
 import React from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ToastProvider } from '@/shared/hooks/useToast'
+import { AuthProvider } from '@/features/auth/context/AuthContext'
 import { AppRouter } from '@/navigation/AppRouter'
 
 // Initialize TanStack Query Client with mobile-optimized defaults
@@ -22,7 +23,9 @@ export const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ToastProvider>
-        <AppRouter />
+        <AuthProvider>
+          <AppRouter />
+        </AuthProvider>
       </ToastProvider>
     </QueryClientProvider>
   )
